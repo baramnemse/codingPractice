@@ -13,6 +13,12 @@ public class LongestCommonSubsequence {
 
 	}
 
+	/**
+	 * O(n^2) O(mn)
+	 * @param str1
+	 * @param str2
+	 * @return
+	 */
 	public static int commonSubsequence(String str1, String str2) {
 		int L[][] = new int[str1.length() + 1][str2.length() + 1];
 		for (int i = 0; i < str1.length(); i++) {
@@ -29,6 +35,12 @@ public class LongestCommonSubsequence {
 		return L[str1.length()][str2.length()];
 	}
 
+	/**
+	 * O(n^2) O(mn)
+	 * @param str1
+	 * @param str2
+	 * @return
+	 */
 	public static int commonSubstring(String str1, String str2) {
 		int result = 0;
 		int L[][] = new int[str1.length() + 1][str2.length() + 1];
