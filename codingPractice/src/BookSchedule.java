@@ -1,12 +1,10 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class QRemind {
+public class BookSchedule {
 	public static void main(String[] args) {
 		int input[] = new int[] { 14, 10, 3, 8, 4, 12, 5, 9, 2, 4, 11, 7, 10, 24 };
-		solve(input, 5);
+		solve(input, 8);
 	}
 
 	private static void solve(int[] input, int day) {
@@ -16,12 +14,12 @@ public class QRemind {
 			average += i;
 		}
 		average = average / day;
-		// 평균값 보다 작은 후보를 뽑는다.
 		int candidateSum = 0;
 		for (int i = 0; i < input.length; i++) {
 			List schedule = new ArrayList();
 			candidateSum = 0;
 			int j = 0;
+			// 평균값 보다 작은 후보를 뽑는다.
 			do {
 				candidateSum += input[i + j];
 				schedule.add(i + j);
@@ -32,6 +30,7 @@ public class QRemind {
 				int candidate1 = Math.abs(candidateSum - average);
 				int candidate2 = Math.abs((candidateSum - input[i + j - 1]) - average);
 				if (candidate2 < candidate1) {
+					// 마지막에 추가한 쳅터를 뺀다.
 					schedule.remove(schedule.size() - 1);
 				}
 				i = i + schedule.size() - 1;
@@ -40,4 +39,5 @@ public class QRemind {
 		}
 
 	}
+
 }

@@ -2,13 +2,14 @@ import java.util.Stack;
 
 /**
  * 계산법 이해안감
+ * 
  * @author Wonjin Heo
  *
  */
 public class HistogramRectangle {
 
 	public static void main(String[] args) {
-		int array[] = new int[] { 3, 4, 2 };
+		int array[] = new int[] { 4, 3, 2, 4 };
 		System.out.println(largestRectangleArea(array));
 
 	}
@@ -19,10 +20,10 @@ public class HistogramRectangle {
 
 		while (i <= heights.length) {
 			int no;
-			if(i == heights.length){
-				no=0;
-			}else{
-				no= heights[i];
+			if (i == heights.length) {
+				no = 0;
+			} else {
+				no = heights[i];
 			}
 			if (stack.isEmpty() || no >= heights[stack.peek()]) {
 				stack.push(i);
