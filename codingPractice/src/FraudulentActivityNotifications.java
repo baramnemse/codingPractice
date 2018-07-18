@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Median값을 빠르게 가져와야 속도 개선 가능
+ * @author Wonjin Heo
+ *
+ */
 public class FraudulentActivityNotifications {
 
 	static int activityNotifications(int[] expenditure, int d) {
@@ -15,6 +20,7 @@ public class FraudulentActivityNotifications {
 			if (rightPointer - leftPointer + 1 < d && leftPointer < 1) {
 				rightPointer++;
 			} else if (rightPointer - leftPointer + 1 == d) {
+				// 여기서 성능 저하
 				double average = 0.0;
 				int temp[] = new int[d];
 				System.arraycopy(expenditure, leftPointer, temp, 0, d);
@@ -24,7 +30,7 @@ public class FraudulentActivityNotifications {
 				} else {
 					average = temp[d / 2];
 				}
-
+				// 성능저하 끝
 				if (expenditure[rightPointer + 1] >= average * 2) {
 					alert++;
 				}
