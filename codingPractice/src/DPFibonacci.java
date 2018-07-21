@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class DynamicFibonacci {
+public class DPFibonacci {
 	static Map resultMatrix = new HashMap();
 
 	public static void main(String[] args) {

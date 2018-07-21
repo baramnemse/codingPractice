@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class DynamicKnapsack {
+public class DPKnapsack {
 	static Map resultMatrix = new HashMap();
 
 	public static void main(String[] args) {
