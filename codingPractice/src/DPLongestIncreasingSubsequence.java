@@ -24,14 +24,15 @@ public class DPLongestIncreasingSubsequence {
 		int temp = 0;
 
 		for (int i = 1; i < size; i++) {
+			// 캐시에 최대 수열이 쌓이게 되므로 max가 최대 수열의 길이다.
 			if (cache[max - 1] < input[i])
 				cache[max++] = input[i];
 			else if (cache[0] > input[i])
 				cache[0] = input[i];
 			else {
-				// key보다 큰 첫번째 위치
 				temp = Arrays.binarySearch(cache, 0, max, input[i]);
 				if (temp < 0) {
+					// 음수일 경우 key보다 큰 첫번째 위치 -value-1
 					temp = -temp - 1;
 				}
 				cache[temp] = input[i];
