@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 /**
+ * 차가 k은 쌍의 갯수 구하기
  * 더블포인터로 품
  * @author WONJIN
  *

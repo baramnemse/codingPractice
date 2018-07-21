@@ -1,43 +1,37 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class QRemind {
 	public static void main(String[] args) {
-		int input[] = new int[] { 14, 10, 3, 8, 4, 12, 5, 9, 2, 4, 11, 7, 10, 24 };
-		solve(input, 5);
+		int input[] = new int[] { 2, 3, 5 };
+		System.out.println(makeChange(10, input));
+		System.out.println(makeChange2(10, input));
 	}
 
-	private static void solve(int[] input, int day) {
-		// 평균값을 구한다.
-		int average = 0;
-		for (int i : input) {
-			average += i;
-		}
-		average = average / day;
-		// 평균값 보다 작은 후보를 뽑는다.
-		int candidateSum = 0;
-		for (int i = 0; i < input.length; i++) {
-			List schedule = new ArrayList();
-			candidateSum = 0;
-			int j = 0;
-			do {
-				candidateSum += input[i + j];
-				schedule.add(i + j);
-				j++;
-			} while (candidateSum < average && i + j < input.length);
-			// 후보와 평균값이 차가 후보+다음 페이지와 평균값의 차이를 계산하여 작은쪽으로 후보를 선택한다.
-			if (i - 1 < input.length) {
-				int candidate1 = Math.abs(candidateSum - average);
-				int candidate2 = Math.abs((candidateSum - input[i + j - 1]) - average);
-				if (candidate2 < candidate1) {
-					schedule.remove(schedule.size() - 1);
-				}
-				i = i + schedule.size() - 1;
-				System.out.println(schedule);
+	static int makeChange(int money, int coins[]) {
+		int cache[] = new int[money + 1];
+		// 0원을 바꿀 방법
+		cache[0] = 1;
+		for (int i = 0; i < coins.length; i++) {
+			for (int k = coins[i]; k <= money; k++) {
+				cache[k] = cache[k] + cache[k - coins[i]];
 			}
 		}
+		return cache[money];
+	}
 
+	static int makeChange2(int money, int coins[]) {
+		int cache[] = new int[money + 1];
+		Arrays.fill(cache, money + 1);
+		cache[0] = 0;
+		for (int i = 0; i < coins.length; i++) {
+			for (int k = coins[i]; k <= money; k++) {
+				cache[k] = Math.min(cache[k], cache[k - coins[i]] + 1);
+			}
+		}
+		return cache[money];
 	}
 }
