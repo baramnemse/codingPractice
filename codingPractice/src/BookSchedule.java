@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * O(n)
+ * @author WONJIN
+ *
+ */
 public class BookSchedule {
 	public static void main(String[] args) {
 		int input[] = new int[] { 14, 10, 3, 8, 4, 12, 5, 9, 2, 4, 11, 7, 10, 24 };
