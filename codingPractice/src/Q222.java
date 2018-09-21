@@ -16,12 +16,6 @@ public class Q222 {
 				"abc".toCharArray()));
 	}
 
-	/**
-	 * 연산복잡도O(n)
-	 * 
-	 * @param text
-	 * @return
-	 */
 	static boolean checkSerial(char[] text1, char[] text2) {
 		Arrays.sort(text1);
 		Arrays.sort(text2);
