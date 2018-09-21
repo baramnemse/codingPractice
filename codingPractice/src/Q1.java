@@ -1,35 +1,84 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 public class Q1 {
 
 	public static void main(String[] args) {
-		int n = 5;
-		int[] arr1 = { 9, 20, 28, 18, 11 };
-		int[] arr2 = { 30, 1, 21, 17, 28 };
-		makeMap(5, arr1, arr2);
-
-		n = 6;
-		int[] arr3 = { 46, 33, 33, 22, 31, 50 };
-		int[] arr4 = { 27, 56, 19, 14, 14, 10 };
-		makeMap(6, arr3, arr4);
+		List<Integer> input = new ArrayList();
+		input.add(1);
+		input.add(2);
+		input.add(3);
+		input.add(4);
+		input.add(5);
+		List result=cardinalitySort(input);
+		System.out.println(result);
+		
 	}
 
-	static void makeMap(int n, int[] arr1, int[] arr2) {
-		for (int i = 0; i < arr1.length; i++) {
-			String result = Integer.toBinaryString(arr1[i] | arr2[i]);
-			if (result.length() < n) {
-				for (int j = 0; j < n - result.length(); j++) {
-					result = "0" + result;
-				}
-			}
-			for (int j = 0; j < result.length(); j++) {
-				if (result.charAt(j) == '1') {
-					System.out.print('#');
-				} else {
-					System.out.print(' ');
-				}
-			}
-			System.out.println("");
-		}
-	}
+
+	 static List<Integer> cardinalitySort(List<Integer> nums) {
+
+	     // 결과
+
+	     List result = new ArrayList();
+
+	     Map cache = new HashMap();
+
+	     
+
+	     //정수를 이진수 스트링으로 표현
+
+	     for(Integer num:nums){
+
+	         String biString = Integer.toBinaryString(num);
+
+	         // 1의 갯수
+
+	         int count =0;
+
+	         for(int i=0;i<biString.length();i++){
+
+	             if(biString.charAt(i)=='1'){
+
+	                 count++;
+
+	             }
+
+	         }
+
+	         // 1갯수, 숫자로 입력
+
+	         cache.put(num,count);
+
+	     }
+
+	     // 소팅하여 1의 숫자가 작은 순으로 결과에 넣어야함
+
+	     int[] unsortedArray=new int[cache.size()];
+
+	     int i=0;
+
+	     for(Object num:cache.values()){
+
+	         unsortedArray[i]=(int)num;
+
+	         i++;
+
+	     }
+
+	     Arrays.sort(unsortedArray);
+
+	     for(int count:unsortedArray){
+
+	         result.add(cache.get(count));
+
+	     }
+
+	     return result;
+	 }
 
 }
