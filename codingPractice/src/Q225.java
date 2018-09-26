@@ -12,6 +12,12 @@ public class Q225 {
 		System.out.println(true == "a1b6c1".equals(zipString("abbbbbbc")));
 	}
 
+	/**
+	 * 연산복잡도 O(n)
+	 * 공간복잡도 최대 O(2n)
+	 * @param text
+	 * @return
+	 */
 	static String zipString(String text) {
 		StringBuffer result = new StringBuffer();
 		char textBuffer[] = text.toCharArray();
