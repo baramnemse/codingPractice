@@ -14,7 +14,8 @@ public class Q233 {
 	
 	static boolean isRotationString(String s1, String s2){
 		if(s1.length()==s2.length()){
-			return (s1+s2).indexOf(s2)!=-1;
+			// s1을 이어서 더하면 반드시 s2를 포함하게 된다.
+			return (s1+s1).indexOf(s2)!=-1;
 		}
 		return false;
 	}
